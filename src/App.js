@@ -27,39 +27,7 @@ class App extends Component {
   }
 
   getStats2015() {
-    let players = [ 
-    'Jameis Winston', 
-'Marcus Mariota',
-'Dante Fowler', 
-'Amari Cooper', 
-'Brandon Scherff', 
-'Leonard Williams', 
-'Kevin White', 
-'Vic Beasley', 
-'Ereck Flowers', 
-'Todd Gurley', 
-'Trae Waynes', 
-'Danny Shelton', 
-'Andrus Peat', 
-'DeVante Parker', 
-'Melvin Gordon',
-'Kevin Johnson', 
-'Arik Armstead', 
-'Marcus Peters', 
-'Cameron Erving', 
-'Nelson Agholor', 
-'Cedric Ogbuehi', 
-'Bud Dupree', 
-'Shane Ray', 
-'D. J. Humphries', 
-'Shaq Thompson', 
-'Breshad Perriman', 
-'Byron Jones', 
-'Laken Tomlinson', 
-'Phillip Dorsett', 
-'Damarious Randall', 
-'Stephone Anthony', 
-'Malcom Brown' ];
+    let players = [ 'Jameis Winston', 'Marcus Mariota', 'Dante Fowler', 'Amari Cooper', 'Brandon Scherff', 'Leonard Williams', 'Kevin White', 'Vic Beasley', 'Ereck Flowers', 'Todd Gurley', 'Trae Waynes', 'Danny Shelton', 'Andrus Peat', 'DeVante Parker', 'Melvin Gordon', 'Kevin Johnson', 'Arik Armstead', 'Marcus Peters', 'Cameron Erving', 'Nelson Agholor', 'Cedric Ogbuehi', 'Bud Dupree', 'Shane Ray', 'D. J. Humphries', 'Shaq Thompson', 'Breshad Perriman', 'Byron Jones', 'Laken Tomlinson', 'Phillip Dorsett', 'Damarious Randall', 'Stephone Anthony', 'Malcom Brown', 'Landon Collins', 'Donovan Smith', 'Mario Edwards', 'T. J. Yeldon', 'Devin Smith', 'Preston Smith', 'Eddie Goldman', 'Dorial Green-Beckham', 'Devin Funchess', 'Jalen Collins', 'Benardrick McKinney', 'Hau\'oli Kikaha', 'Eric Kendricks', 'Jaquiski Tartt', 'Eric Rowe', 'Denzel Perryman', 'Mitch Morse', 'Ronald Darby', 'Nate Orchard', 'Jordan Phillips', 'Jake Fisher', 'Ameer Abdullah', 'Maxx Williams', 'Senquez Golson', 'Rob Havenstein', 'Markus Golden', 'Ty Sambrailo', 'Randy Gregory', 'Ali Marpet', 'Quinten Rollins', 'Frank Clark', 'Jordan Richards', 'D\'Joun Smith', 'Jeremiah Poutasi','A. J. Cann', 'Clive Walford', 'Tyler Lockett', 'Jaelen Strong', 'Hroniss Grasu', 'Jamon Brown', 'Tevin Coleman', 'Owa Odighizuwa', 'Garrett Grayson', 'Chris Conley', 'Duke Johnson', 'P. J. Williams', 'Eli Harold', 'Alex Carter', 'John Miller', 'Lorenzo Mauldin', 'Craig Mager', 'Jordan Hicks', 'Tyler Kroft', 'David Johnson', 'Sammie Coates', 'Danielle Hunter', 'Sean Mannion', 'Carl Davis', 'Chaz Green', 'Jeff Heuerman', 'Henry Anderson', 'Ty Montgomery', 'Matt Jones', 'Xavier Cooper', 'Geneo Grissom', 'Steven Nelson', 'Paul Dawson', 'Angelo Blackson', 'Trey Flowers', 'Daryl Williams', 'Bryce Petty', 'James Sample', 'Jamison Crowder', 'Jeremy Langford', 'Justin Hardy', 'Jalston Fowler', 'Clayton Geathers', 'T. J. Clemmings', 'Tre\' Jackson', 'Arie Kouandjio', 'Gabe Wright', 'Jamil Douglas', 'Ibraheim Campbell', 'Rodney Gunter', 'Blake Bell', 'Ramik Wilson', 'Andrew Donnal', 'Josh Shaw', 'Doran Grant', 'Za\'Darius Smith', 'Vince Mayle', 'Kwon Alexander', 'Javorius Allen', 'Mike Davis', 'Damien Wilson', 'Jon Feliciano', 'Jake Ryan', 'Terry Poole', 'Shaq Mason', 'DeAndre Smelter', 'Max Garcia', 'Mark Glowinski', 'Marcus Hardison', 'Tray Walker', 'Grady Jarrett', 'David Cobb', 'Rashad Greene', 'Ben Heeney', 'Martrell Spaight', 'Adrian Amos', 'MyCole Pruitt', 'Mykkele Thompson', 'Bobby McCain', 'Stefon Diggs', 'Brett Hundley', 'Davis Tull', 'Jay Ajayi', 'Cedric Thompson', 'David Parry', 'Jarvis Harrison', 'Kyle Emanuel', 'Tyeler Davison', 'Karlos Williams', 'Tony Lippett', 'C. J. Uzomah', 'Shaquille Riddick', 'J. J. Nelson', 'Jesse James', 'Neiron Ball', 'Kenny Bell', 'Ryan Russell', 'Lorenzo Doss', 'Bradley Pinion', 'Joe Cardona', 'Damian Swann', 'Michael Burton', 'David Mayo', 'Tye Smith', 'Nick Boyle', 'D. J. Alexander', 'James O\'Shaughnessy', 'Cameron Artis-Payne', 'Keith Mumphery', 'Robert Myers', 'Deiontrez Mount', 'Matthew Wells', 'Max Valles', 'Michael Bennett', 'Kyshoen Jarrett', 'Tevin Mitchel', 'Tayo Fabuluje', 'KaelinClay', 'Tyrus Thompson', 'Geremy Davis', 'Evan Spencer', 'Tony Steward', 'Charles Gaines', 'Ian Silberman', 'JaCorey Shepherd', 'Darius Philon', 'B. J. Dubose', 'Nick O\'Leary', 'Malcolm Johnson', 'Randall Evans', 'Derron Smith', 'Randall Telfer', 'Leterrius Walton', 'Quandre Diggs', 'Bud Sasser', 'A. J. Derby', 'Darius Kilgo', 'Darren Waller', 'Josh Robinson', 'Aaron Ripkowski', 'Amarlo Herrera', 'Andy Gallik', 'Obum Gwacham', 'Christian Ringo', 'Reshard Cliett', 'Anthony Chickillo','Kennard Backman', 'Kristjan Sokoli', 'Cody Wichmann', 'Christian Covington', 'Rakeem Nunez-Roches', 'Anthony Morris', 'Hayes Pullard', 'Neal Sterling', 'Andre Debose', 'Austin Reiter', 'Deon Simon', 'Bryce Hager', 'Jake Rodgers', 'Bobby Hart', 'Martin Ifedi', 'Austin Shepherd', 'Ben Koyack', 'Marcus Murphy', 'Joey Iosefa','Edmond Robinson', 'Da\'Ron Brown', 'Dezmin Lewis', 'Kenny Hilliard', 'Mark Nzeocha', 'Brian Mihalik', 'Mario Alford', 'Gerod Holliman', 'Corey Robinson', 'Ifo Ekpre-Olomu', 'Dexter McDonald', 'Laurence Gibson', 'Trenton Brown', 'Tre McBride', 'Geoff Swaim', 'Darryl Roberts', 'Ryan Murphy', 'Akeem King', 'Trevor Siemian', 'Taurean Nixon', 'Josh Furman', 'Xzavier Dickson', 'Rory Anderson', 'Denzelle Good', 'Gerald Christian', ];
     this.setState({players: players})
     this.getStats(players, 2015);
   }
@@ -71,40 +39,7 @@ class App extends Component {
   }
 
   getStats2017() {
-    let players = [
-      'Myles Garrett', 
-'Mitchell Trubisky', 
-'Solomon Thomas', 
-'Leonard Fournette', 
-'Corey Davis', 
-'Jamal Adams', 
-'Mike Williams', 
-'Christian McCaffrey', 
-'John Ross', 
-'Patrick Mahomes', 
-'Marshon Lattimore',
-'Deshaun Watson', 
-'Haason Reddick', 
-'Derek Barnett', 
-'Malik Hooker', 
-'Marlon Humphrey', 
-'Jonathan Allen', 
-'Adoree\' Jackson', 
-'O. J. Howard', 
-'Garett Bolles', 
-'Jarrad Davis', 
-'Charles Harris', 
-'Evan Engram', 
-'Gareon Conley', 
-'Jabrill Peppers', 
-'Takkarist McKinley', 
-'Tre\'Davious White', 
-'Taco Charlton', 
-'David Njoku', 
-'T. J. Watt', 
-'Reuben Foster', 
-'Ryan Ramczyk', 
-    ];
+    let players = [ 'Myles Garrett', 'Mitchell Trubisky', 'Solomon Thomas', 'Leonard Fournette', 'Corey Davis', 'Jamal Adams', 'Mike Williams', 'Christian McCaffrey', 'John Ross', 'Patrick Mahomes II', 'Marshon Lattimore', 'Deshaun Watson', 'Haason Reddick', 'Derek Barnett', 'Malik Hooker', 'Marlon Humphrey', 'Jonathan Allen', 'Adoree\' Jackson', 'O. J. Howard', 'Garett Bolles', 'Jarrad Davis', 'Charles Harris', 'Evan Engram', 'Gareon Conley', 'Jabrill Peppers', 'Takkarist McKinley', 'Tre\'Davious White', 'Taco Charlton', 'David Njoku', 'T. J. Watt', 'Reuben Foster', 'Ryan Ramczyk', 'Kevin King', 'Cam Robinson', 'Malik McDowell', 'Budda Baker', 'Zay Jones', 'Forrest Lamp', 'Marcus Maye', 'Curtis Samuel', 'Dalvin Cook', 'Marcus Williams', 'Sidney Jones', 'Gerald Everett', 'Adam Shaheen', 'Quincy Wilson', 'Tyus Bowser', 'JoeMixon', 'Ryan Anderson', 'Justin Evans', 'DeMarcus Walker', 'DeShone Kizer', 'Teez Tabor', 'Raekwon McMillan', 'Dalvin Tomlinson', 'Obi Melifonwu', 'Zach Cunningham', 'Ethan Pocic', 'Tanoh Kpassagnon', 'Chidobe Awuzie', 'Josh Jones', 'JuJu Smith-Schuster', 'Dion Dawkins', 'Taylor Moton', 'Larry Ogunjobi', 'Ahkello Witherspoon', 'Alvin Kamara', 'Dawuane Smoot', 'Cooper Kupp', 'Pat Elflein', 'Dan Feeney', 'Taywan Taylor', 'Jordan Willis', 'Chris Wormley', 'Duke Riley', 'Alex Anzalone','Daeshon Hall', 'Tim Williams', 'ArDarius Stewart', 'Tarell Basham', 'Fabian Moreau', 'Carlos Henderson', 'Derek Rivers', 'Chris Godwin', 'Antonio Garcia', 'Kareem Hunt', 'Davis Webb', 'Eddie Vanderdoes', 'D\'Onta Foreman', 'Shaquill Griffin', 'John Johnson', 'Jourdan Lewis', 'Montravius Adams', 'Cameron Sutton', 'Delano Hill', 'Kenny Golladay', 'Cordrea Tankersley', 'Chad Williams', 'Rasul Douglas', 'Jonnu Smith', 'Brendan Langley', 'Nazair Jones', 'Trey Hendrickson', 'C. J. Beathard', 'James Conner', 'Amara Darboh', 'Kendell Beckwith', 'Vince Biegel', 'Jaleel Johnson', 'Dede Westbrook', 'Tedric Thompson', 'Eddie Jackson', 'Rayshawn Jenkins', 'Samaje Perine', 'Dorian Johnson', 'Carl Lawson', 'Josh Reynolds', 'Mack Hollins', 'Tarik Cohen', 'Ben Gedeon', 'Joe Williams', 'Nico Siragusa', 'Montae Nicholson', 'Jalen Reeves-Maybin', 'Samson Ebukam', 'Howard Wilson', 'Michael Roberts', 'Josh Malone', 'David Sharpe', 'Julién Davenport', 'Deatrich Wise Jr.', 'Donnel Pumphrey', 'Ryan Switzer', 'Jamaal Williams', 'Joshua Dobbs', 'Sean Harlow', 'Zach Banner', 'Ryan Glasgow', 'Jehu Chesson', 'Wayne Gallman', 'Chad Hansen', 'Carlos Watkins', 'Marlon Mack', 'Grover Stewart', 'Jake Butt', 'George Kittle', 'Jordan Morgan', 'Blair Brown', 'Damontae Kazee', 'Jordan Leggett', 'Desmond King', 'Corn Elder', 'Jake Elliott', 'Jeremy Sprinkle', 'Jayon Brown', 'Brian Hill', 'Will Holden', 'Nate Hairston', 'Jermaine Eluemunor', 'Roderick Johnson', 'Anthony Walker Jr.','Jeremy McNichols', 'Matt Milano', 'Isaac Asiata', 'Jamal Agnew', 'Shelton Gibson', 'Avery Moss', 'Marquel Lee', 'Treston Decoud', 'Rodney Adams', 'Nathan Peterman', 'Isaiah McKenzie', 'Brian Allen', 'Eric Saubert', 'DeAngelo Yancey', 'J. J. Dielman', 'Trent Taylor', 'Davon Godchaux', 'T. J. Logan', 'Danny Isidora', 'Dylan Donahue', 'Aaron Jones', 'Ukeme Eligwe', 'Nathan Gerry', 'Caleb Brantley', 'Chuck Clark', 'Mike Tyson', 'Elijah McGuire', 'Tanzel Smart', 'Sam Tevi', 'Xavier Woods', 'Alexander Armah', 'Jordan Evans', 'Vincent Taylor', 'Tanner Vallejo', 'Al-Quadin Muhammad', 'Jeremy Clark', 'D. J. Jones', 'Chase Roullier', 'Adam Bisnowaty', 'Bucky Hodges', 'Pita Taumoepenu', 'De\'Angelo Henderson', 'Derrick Jones', 'Jeremiah Ledbetter', 'Sam Rogers', 'Brandon Wilson', 'Rudy Ford', 'Robert Davis', 'Justin Senior', 'Conor McDermott', 'Kofi Amichia', 'Colin Holba', 'Elijah Qualls', 'Brad Kaaya', 'Marquez White', 'Corey Levin', 'Leon McQuay III', 'Stacy Coley', 'Ifeadi Odenigbo', 'Shalom Luani', 'Jalen Myrick', 'Stevie Tu\'ikolovatu', 'Zane Gonzalez', 'Isaac Rochell', 'David Moore', 'Josh Carraway', 'Joey Ivie', 'Adrian Colbert', 'Josh Harvey-Clemons', 'Jylan Ware', 'Elijah Lee', 'Harrison Butker', 'Ejuan Price', 'Joshua Holsey', 'Brad Seaton', 'Isaiah Ford', 'Devante Mays', 'Noah Brown', 'Marquez Williams', 'Khalfani Muhammad', 'Elijah Hood', 'Kyle Fuller', 'Treyvon Hester', 'Jack Tocho', 'Jordan Carrell', 'Malachi Dupre', 'Keion Adams', 'Chris Carson', 'Pat O\'Connor', 'Mason Schreck', 'Matthew Dayes', 'Chad Kelly', ];
     this.setState({players: players})
     this.getStats(players, 2017);
   }

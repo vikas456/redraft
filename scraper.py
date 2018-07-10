@@ -1,7 +1,7 @@
 from urllib2 import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
-my_url = 'https://en.wikipedia.org/wiki/2016_NFL_Draft'
+my_url = 'https://en.wikipedia.org/wiki/2015_NFL_Draft'
 uClient = uReq(my_url)
 page_html = uClient.read()
 uClient.close()
