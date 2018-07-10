@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
-
+import Profile from './Profile'
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       stats: [],
-      players: []
+      players: [],
+      value: 'inti'
     }
     this.getStats2015 = this.getStats2015.bind(this);
     this.getStats2016 = this.getStats2016.bind(this);
     this.getStats2017 = this.getStats2017.bind(this);
     this.getStats = this.getStats.bind(this);
     this.includes = this.includes.bind(this);
+    // this.clickEvent = this.clickEvent.bind(this);
   }
 
   includes(arr, elem) {
@@ -81,8 +83,22 @@ class App extends Component {
       });
     }
   }
+
+  clickEvent(row) {
+    this.setState({value: row.Name});
+  }
   
   render() {
+    const selectRowProp = {
+      mode: 'radio',
+      bgColor: 'pink',
+      clickToSelect: true 
+    };
+    
+    const options = {
+      onRowClick: this.clickEvent.bind(this)
+    };
+
     return (
       <div className="App">
         <h1>Redraft</h1>
@@ -97,13 +113,13 @@ class App extends Component {
             </Nav>
           </Navbar>
           <div id="resultTable">
-            <BootstrapTable data={this.state.stats}>
+            <BootstrapTable data={this.state.stats} selectRow={ selectRowProp } options={options}>
               <TableHeaderColumn dataField='Name' isKey={true} dataSort={true}>Name</TableHeaderColumn>
               <TableHeaderColumn dataField='Pick' dataSort={true}>Pick</TableHeaderColumn>
               <TableHeaderColumn dataField='Redraft' dataSort={true}>Redraft</TableHeaderColumn>
             </BootstrapTable>
           </div>
-          
+          <textarea value={this.state.value} readOnly="true"></textarea>
         </div>
       </div>
     );
