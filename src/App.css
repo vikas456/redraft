@@ -1,3 +1,9 @@
 #resultTable {
-  width: 50%;
+  width: 40%;
+  float: left;
+}
+
+#txt {
+  width: 40%;
+  float: right;
 }
