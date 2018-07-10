@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
-import Profile from './Profile'
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       stats: [],
       players: [],
-      value: 'inti'
+      value: '',
+      extraStats: []
     }
     this.getStats2015 = this.getStats2015.bind(this);
     this.getStats2016 = this.getStats2016.bind(this);
     this.getStats2017 = this.getStats2017.bind(this);
     this.getStats = this.getStats.bind(this);
     this.includes = this.includes.bind(this);
-    // this.clickEvent = this.clickEvent.bind(this);
   }
 
   includes(arr, elem) {
@@ -49,6 +49,7 @@ class App extends Component {
   getStats(playersArr, time) {
     this.setState({stats: []});
     let arr = [];
+    let extra = [];
     for (let year = time; year < 2018; year++){
       fetch('http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=' + year, {
         method: 'GET'
@@ -66,6 +67,7 @@ class App extends Component {
                 }
                 else{
                   arr.push({Name: playerInfo[i].name, Pick: j + 1, Redraft: playerInfo[i].seasonPts});
+                  extra.push({Name: playerInfo[i].name, position: playerInfo[i].position, team: playerInfo[i].teamAbbr});
                 }
               }
             }
@@ -77,6 +79,7 @@ class App extends Component {
           arr[i].Redraft = i + 1;
         }
         this.setState({stats: arr});
+        this.setState({extraStats: extra});
         return myJson;
       }).catch((e) => {
         console.log('error occured: ' + e);
@@ -85,7 +88,15 @@ class App extends Component {
   }
 
   clickEvent(row) {
-    this.setState({value: row.Name});
+    let arr = this.state.extraStats;
+    let i = 0;
+    for (i = 0; i < arr.length; i++) {
+      if (row.Name.localeCompare(arr[i].Name) === 0){
+        break;
+      }
+    }
+    let query = row.Name + " " + arr[i].position + " " + arr[i].team;
+    this.setState({value: query});
   }
   
   render() {
@@ -119,7 +130,7 @@ class App extends Component {
               <TableHeaderColumn dataField='Redraft' dataSort={true}>Redraft</TableHeaderColumn>
             </BootstrapTable>
           </div>
-          <textarea value={this.state.value} readOnly="true"></textarea>
+          <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
         </div>
       </div>
     );
