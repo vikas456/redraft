@@ -10,7 +10,8 @@ class App extends Component {
       stats: [],
       players: [],
       value: '',
-      extraStats: []
+      extraStats: [],
+      link: ''
     }
     this.getStats2015 = this.getStats2015.bind(this);
     this.getStats2016 = this.getStats2016.bind(this);
@@ -97,8 +98,19 @@ class App extends Component {
     }
     let query = row.Name + " " + arr[i].position + " " + arr[i].team;
     this.setState({value: query});
+    let name = row.Name.split(" ");
+    let wiki = 'https://en.wikipedia.org/wiki/' + name[0] + '_' + name[1];
+    this.setState({link: wiki});
   }
   
+  //todo
+  //links to player wiki: dangerously set inner html with string concat
+  //biggest steal and bust of each draft
+  //format player info
+  //redesign site
+  //10 years
+  //access player pictures
+
   render() {
     const selectRowProp = {
       mode: 'radio',
@@ -131,6 +143,7 @@ class App extends Component {
             </BootstrapTable>
           </div>
           <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
+          <a href={this.state.link} target="_blank">Link to wiki</a>
         </div>
       </div>
     );
