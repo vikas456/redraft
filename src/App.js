@@ -11,7 +11,11 @@ class App extends Component {
       players: [],
       value: '',
       extraStats: [],
-      link: ''
+      link: '',
+      stealName: '',
+      stealDiff: '',
+      bustName: '',
+      bustDiff: ''
     }
     this.getStats2015 = this.getStats2015.bind(this);
     this.getStats2016 = this.getStats2016.bind(this);
@@ -58,6 +62,10 @@ class App extends Component {
         return req.json();
       }).then((myJson) => {
         let playerInfo = myJson.players;
+        let max = 0;
+        let min = 0;
+        let maxName = '';
+        let minName = '';
         for(let i = 0; i < playerInfo.length; i++){
           if (playerInfo[i].esbid !== null) {
             for (let j = 0; j < playersArr.length; j++){
@@ -74,11 +82,29 @@ class App extends Component {
             }
           }
         }
-        //go through arr and check for players drafted in first or second round of 2016 draft
+
         arr.sort(((a, b) => b.Redraft - a.Redraft));
         for (let i = 0; i < arr.length; i++){
           arr[i].Redraft = i + 1;
         }
+
+        //determining biggest steal and bust
+        for (let i = 0; i < arr.length; i++) {
+          let diff = Number(arr[i].Redraft) - Number(arr[i].Pick);
+          if (diff < min) {
+            min = diff;
+            minName = arr[i].Name;
+          }
+          if (diff > max) {
+            max = diff;
+            maxName = arr[i].Name;
+          }
+        }
+
+        this.setState({stealName: minName});
+        this.setState({bustName: maxName});
+        this.setState({stealDiff: min});
+        this.setState({bustDiff: max});        
         this.setState({stats: arr});
         this.setState({extraStats: extra});
         return myJson;
@@ -104,7 +130,6 @@ class App extends Component {
   }
   
   //todo
-  //links to player wiki: dangerously set inner html with string concat
   //biggest steal and bust of each draft
   //format player info
   //redesign site
@@ -142,8 +167,14 @@ class App extends Component {
               <TableHeaderColumn dataField='Redraft' dataSort={true}>Redraft</TableHeaderColumn>
             </BootstrapTable>
           </div>
-          <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
-          <a href={this.state.link} target="_blank">Link to wiki</a>
+          <div id="resulttxt">
+            <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
+            <br></br>
+            <a href={this.state.link} target="_blank">Link to wiki</a>
+            <p>Biggest Steal</p>
+            <div>{this.state.stealName} was the biggest steal with a diff of {this.state.stealDiff}</div>
+            <div>{this.state.bustName} was the biggest bust with a diff of {this.state.bustDiff}</div>
+          </div>
         </div>
       </div>
     );
