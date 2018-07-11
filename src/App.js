@@ -122,7 +122,7 @@ class App extends Component {
         break;
       }
     }
-    let query = row.Name + " " + arr[i].position + " " + arr[i].team;
+    let query = 'Name: ' + row.Name + '\nPosition: ' + arr[i].position + '\nTeam: ' + arr[i].team;
     this.setState({value: query});
     let name = row.Name.split(" ");
     let wiki = 'https://en.wikipedia.org/wiki/' + name[0] + '_' + name[1];
@@ -130,8 +130,6 @@ class App extends Component {
   }
   
   //todo
-  //biggest steal and bust of each draft
-  //format player info
   //redesign site
   //10 years
   //access player pictures
