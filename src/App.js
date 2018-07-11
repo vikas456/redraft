@@ -178,8 +178,11 @@ class App extends Component {
   }
   
   //todo
-  //redesign site
-  //access player pictures
+  //access player pictures: python web parser
+  //add site instructions, explanations, and disclaimers: look at examples
+  //redesign site: look at examples
+  //work on hover
+  //link site to my site
 
   render() {
     const selectRowProp = {
