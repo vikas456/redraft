@@ -10,8 +10,11 @@ class App extends Component {
       stats: [],
       players: [],
       value: '',
+<<<<<<< HEAD
       firstName: '',
       lastName: '',
+=======
+>>>>>>> cde11e95fb540b933a6dad96da1a3e5d70f26f86
       extraStats: [],
       link: '',
       stealName: '',
@@ -175,18 +178,28 @@ class App extends Component {
     let query = 'Name: ' + row.Name + '\nPosition: ' + arr[i].position + '\nTeam: ' + arr[i].team;
     this.setState({value: query});
     let name = row.Name.split(" ");
+<<<<<<< HEAD
     this.setState({firstName: name[0]});
     this.setState({lastName: name[1]});
+=======
+>>>>>>> cde11e95fb540b933a6dad96da1a3e5d70f26f86
     let wiki = 'https://en.wikipedia.org/wiki/' + name[0] + '_' + name[1];
     this.setState({link: wiki});
   }
   
   //todo
+<<<<<<< HEAD
   //redesign site: see mock
   //work on hover: name, pick, repick, total points
   //fill out missing data
   //Create graphs to show player vs pick vs redraft; see mock
   //access player pictures: python web parser (wiki has access issues)
+=======
+  //access player pictures: python web parser
+  //add site instructions, explanations, and disclaimers: look at examples
+  //redesign site: look at examples
+  //work on hover
+>>>>>>> cde11e95fb540b933a6dad96da1a3e5d70f26f86
   //link site to my site
 
   render() {
@@ -202,6 +215,7 @@ class App extends Component {
 
     return (
       <div className="App">
+<<<<<<< HEAD
         <h1>The past ten years of the NFL</h1>
         <h1>Redrafted</h1>
         <p>Based on fantasy points accumulated over each player's carrer</p>
@@ -217,6 +231,9 @@ class App extends Component {
         <p>Now that you understand how the information is derived, let's take a look on how past picks have faired over the years</p>
         <h2>Do your picks stack up to their potential</h2>
         <p>Click on a year to see player data. Sorting is available based on draft and redraft picks. For more information on a player, simply click on their name</p>
+=======
+        <h1>Redraft</h1>
+>>>>>>> cde11e95fb540b933a6dad96da1a3e5d70f26f86
         <div>
           <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></link>
           <link rel="stylesheet" href="./dist/react-bootstrap-table.min.css"></link>
@@ -248,6 +265,7 @@ class App extends Component {
             <p>Biggest Steal</p>
             <div>{this.state.stealName} was the biggest steal with a diff of {this.state.stealDiff}</div>
             <div>{this.state.bustName} was the biggest bust with a diff of {this.state.bustDiff}</div>
+<<<<<<< HEAD
             <img src={'https://en.wikipedia.org/wiki/' + this.state.firstName + '_' + this.state.lastName + '#/media/File:' + this.state.firstName + '_' + this.state.lastName + '.JPG'} alt={'image of ' + this.state.firstName + ' ' + this.state.lastName}/>
           </div>
         </div>
@@ -266,6 +284,10 @@ class App extends Component {
         <p>This was a side project to keep my mind busy because I got bored after work over the summers, and I wanted to put my skills to the test</p>
         <p>As of now, I have chosen to disclude undrafted players or players drafted before the last ten years. Make sure to keep these players in mind.</p>
         <p>For more information, get in touch: vikas.peraka@gmail.com</p>
+=======
+          </div>
+        </div>
+>>>>>>> cde11e95fb540b933a6dad96da1a3e5d70f26f86
       </div>
     );
   }
