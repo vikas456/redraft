@@ -221,6 +221,7 @@ class App extends Component {
           <p>Now that you understand how the information is derived, let's take a look on how past picks have faired over the years</p>
           <h2 id="text3">do your picks stack up to their potential?</h2>
           <p id="text5">Click on a year to see player data. Sorting is available based on draft and redraft picks. For more information on a player, simply click on their name</p>
+          <p id="text6">It may take a few seconds to load your data</p>
         </div>
         <div id="result">
           <Navbar>
@@ -239,10 +240,10 @@ class App extends Component {
           </Navbar>
           <div id="resultOps">
             <div id="resultTable">
-              <BootstrapTable hover condensed height='400' scrollTop={'Bottom'} data={this.state.stats} selectRow={ selectRowProp } options={options}>
+              <BootstrapTable hover condensed height='400' scrollTop={'Bottom'} data={this.state.stats} selectRow={ selectRowProp } options={options} search={true}>
                 <TableHeaderColumn dataField='Name' isKey={true} dataSort={true}>Name</TableHeaderColumn>
-                <TableHeaderColumn dataField='Pick' dataSort={true}>Pick</TableHeaderColumn>
-                <TableHeaderColumn dataField='Redraft' dataSort={true}>Redraft</TableHeaderColumn>
+                <TableHeaderColumn dataField='Pick' dataSort={true} searchable={false}>Pick</TableHeaderColumn>
+                <TableHeaderColumn dataField='Redraft' dataSort={true} searchable={false}>Redraft</TableHeaderColumn>
               </BootstrapTable>
             </div>
             <div id="resulttxt">
