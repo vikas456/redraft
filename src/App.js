@@ -3,6 +3,8 @@ import './App.css';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+import Info from './Info';
+import Wiki from './Wiki';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +20,8 @@ class App extends Component {
       stealName: '',
       stealDiff: '',
       bustName: '',
-      bustDiff: ''
+      bustDiff: '',
+      selected: false
     }
     this.getStats2008 = this.getStats2008.bind(this);
     this.getStats2009 = this.getStats2009.bind(this);
@@ -32,6 +35,8 @@ class App extends Component {
     this.getStats2017 = this.getStats2017.bind(this);
     this.getStats = this.getStats.bind(this);
     this.includes = this.includes.bind(this);
+    this.info = this.info.bind(this);
+    this.wiki = this.wiki.bind(this);
   }
 
   includes(arr, elem) {
@@ -104,6 +109,7 @@ class App extends Component {
 
   getStats(playersArr, time) {
     this.setState({stats: []});
+    this.setState({selected: true});
     let arr = [];
     let extra = [];
     for (let year = time; year < 2018; year++){
@@ -181,14 +187,32 @@ class App extends Component {
     let wiki = 'https://en.wikipedia.org/wiki/' + name[0] + '_' + name[1];
     this.setState({link: wiki});
   }
+
+  info() {
+    if (this.state.selected) {
+      let props = {
+        stealName: this.state.stealName,
+        stealDiff: this.state.stealDiff,
+        bustName: this.state.bustName,
+        bustDiff: this.state.bustDiff
+      };
+      return <Info info={props} />
+    }
+  }
+
+  wiki() {
+    if (this.state.link.localeCompare('') !== 0) {
+      return <Wiki link={this.state.link} />
+    }
+  }
   
   //todo
-  //dangerously set inner html of text area
-  //conditionally render results
-  //redesign site: see mock
+  //dangerously set inner html of text area (look at past project)
+  //conditionally render results after text area
+
+  //Create graphs to show player vs pick vs redraft; see mock
   //work on hover: name, pick, repick, total points
   //fill out missing data
-  //Create graphs to show player vs pick vs redraft; see mock
   //access player pictures: python web parser (wiki has access issues)
   //link site to my site
 
@@ -248,10 +272,9 @@ class App extends Component {
             </div>
             <div id="resulttxt">
               <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
-              <a href={this.state.link} target="_blank" id="wiki">click here for more info</a>
-              <p id="steal">{this.state.stealName} was the biggest steal with a diff of {this.state.stealDiff}</p>
-              <p id="bust">{this.state.bustName} was the biggest bust with a diff of {this.state.bustDiff}</p>
-              <img src={'https://en.wikipedia.org/wiki/' + this.state.firstName + '_' + this.state.lastName + '#/media/File:' + this.state.firstName + '_' + this.state.lastName + '.JPG'} alt={'image of ' + this.state.firstName + ' ' + this.state.lastName}/>
+              {this.wiki()}
+              {this.info()}
+              {/* <img src={'https://en.wikipedia.org/wiki/' + this.state.firstName + '_' + this.state.lastName + '#/media/File:' + this.state.firstName + '_' + this.state.lastName + '.JPG'} alt={'image of ' + this.state.firstName + ' ' + this.state.lastName}/> */}
             </div>
           </div>
         </div>
