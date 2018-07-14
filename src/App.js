@@ -37,6 +37,7 @@ class App extends Component {
     this.includes = this.includes.bind(this);
     this.info = this.info.bind(this);
     this.wiki = this.wiki.bind(this);
+    this.textChange = this.textChange.bind(this);
   }
 
   includes(arr, elem) {
@@ -179,7 +180,7 @@ class App extends Component {
         break;
       }
     }
-    let query = 'Name: ' + row.Name + '\nPosition: ' + arr[i].position + '\nTeam: ' + arr[i].team;
+    let query = '<font size="5" face="Times New Roman", Times, serif> Name: </font>' + row.Name + '<br/><font size="5" face="Times New Roman", Times, serif>Position: </font>' + arr[i].position + '<br><font size="5" face="Times New Roman", Times, serif>Team: </font>' + arr[i].team;
     this.setState({value: query});
     let name = row.Name.split(" ");
     this.setState({firstName: name[0]});
@@ -204,6 +205,10 @@ class App extends Component {
     if (this.state.link.localeCompare('') !== 0) {
       return <Wiki link={this.state.link} />
     }
+  }
+
+  textChange() {
+    return ({__html: this.state.value});
   }
   
   //todo
@@ -270,7 +275,7 @@ class App extends Component {
               </BootstrapTable>
             </div>
             <div id="resulttxt">
-              <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
+              <div id="txt" dangerouslySetInnerHTML={this.textChange()}></div>
               {this.wiki()}
               {this.info()}
               {/* <img src={'https://en.wikipedia.org/wiki/' + this.state.firstName + '_' + this.state.lastName + '#/media/File:' + this.state.firstName + '_' + this.state.lastName + '.JPG'} alt={'image of ' + this.state.firstName + ' ' + this.state.lastName}/> */}
