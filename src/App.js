@@ -207,9 +207,9 @@ class App extends Component {
       <div className="App">
         <div id = "introduction">
           <h1 id="text1">the past ten years of the nfl</h1>
-          <h1 id="text2">Again...</h1>
-          <p id="text2">Based on fantasy points accumulated over each player's carrer</p>
-          <p id="text2">By: Vikas Peraka</p>
+          <h1 id="text2">AGAIN...</h1>
+          <p id="text9">Based on fantasy points accumulated over each player's carrer</p>
+          <p id="text9">By: <a href="http://www.vikasperaka.com/" target="_blank" rel="noopener noreferrer">Vikas Peraka</a></p>
           <br></br>
           <p>Why is it that some picks you make in your fantasy drafts don't stack up to your expectations. Or even better, how you were the one to pick a "sleeper" or "steal" in the draft that may have saved your team from utter demolition. Do you have a similar mindset in filtering out keen players like the current NFL teams? This applicaton serves to illustrate that purpose and give examples of how your picks may not have been the bust that you see it as. And also how even the professionals can make mistakes like you?</p>
           <p>As draft season comes around, there is always the doubt at the back of every GM's head of whether the player in question can perform to expectation, stay healthy, and maybe even break some records and have a generational season. Questions arise over a whether a player's career may be reaching it's end or whether it's a temporary slump. Well, now you have access to the stats to back up some of the claims you might come up with.</p>
@@ -249,27 +249,30 @@ class App extends Component {
             <div id="resulttxt">
               <textarea id="txt" value={this.state.value} readOnly="true"></textarea>
               <a href={this.state.link} target="_blank" id="wiki">click here for more info</a>
-              <div id="steal">{this.state.stealName} was the biggest steal with a diff of {this.state.stealDiff}</div>
-              <div id="bust">{this.state.bustName} was the biggest bust with a diff of {this.state.bustDiff}</div>
+              <p id="steal">{this.state.stealName} was the biggest steal with a diff of {this.state.stealDiff}</p>
+              <p id="bust">{this.state.bustName} was the biggest bust with a diff of {this.state.bustDiff}</p>
               <img src={'https://en.wikipedia.org/wiki/' + this.state.firstName + '_' + this.state.lastName + '#/media/File:' + this.state.firstName + '_' + this.state.lastName + '.JPG'} alt={'image of ' + this.state.firstName + ' ' + this.state.lastName}/>
             </div>
           </div>
         </div>
-        {/* <p>One of the interesting ideas I found is that most of the players drafted in the later rounds don't even make the list. In fact a bunch of undrafter players have had more success than those drafted. Take Wes Welker and Tony Romo for example. Both potentially future Hall of Famers that I don't analyze because their talent was overseen by many teams</p>
-        <h2>Analyzing the biggest busts and steals over the past ten years</h2>
-        <p>Based on this data, you can see that just because a player was the biggest "steal" in this instance doens't necessarily mean they had a legendary career. Most of the success can be attributed to one season over the course of the player's career.</p>
-        <p>Instead in my opinion, you, in picking your next superstar, should click over each of the top players in the draft and see their progression over the years. The biggest "steals" should be who you pick up in the later rounds of your draft</p>
-        <h2>Who was the best draft pick?</h2>
-        <p>The player with the average best per year number of fantasy points was _______</p>
-        <p>Surprised? I sure was.</p>
-        <h2>Which draft class was the best based on per year fanatsy point averages</h2>
-        <p>Over the last ten years, the draft class of _____ accumulated the most points averaging _____ per year.</p>
-        <br></br>
-        <p>Thanks to fantasy and wikipedia for providing the information necessaey to come to these conclusions</p>
-        <p>Disclaimer: I am not affiliated with the NFL or Fantasy Football, and I don't take responsibility for the picks that were based off of this data</p>
-        <p>This was a side project to keep my mind busy because I got bored after work over the summers, and I wanted to put my skills to the test</p>
-        <p>As of now, I have chosen to disclude undrafted players or players drafted before the last ten years. Make sure to keep these players in mind.</p>
-        <p>For more information, get in touch: vikas.peraka@gmail.com</p> */}
+        <div id="endtxt">
+          <h2 id="text3">interesting findings</h2>
+          <p id="text7">One of the interesting ideas I found is that most of the players drafted in the later rounds don't even make the list. In fact a bunch of undrafter players have had more success than those drafted. Take Wes Welker and Tony Romo for example. Both potentially future Hall of Famers that I don't analyze because their talent was overseen by many teams</p>
+          <h2 id="text3">analyzing the biggest busts and steals over the past ten years</h2>
+          <p>Based on this data, you can see that just because a player was the biggest "steal" in this instance doens't necessarily mean they had a legendary career. Most of the success can be attributed to one season over the course of the player's career.</p>
+          <p id="text7">Instead in my opinion, you, in picking your next superstar, should click over each of the top players in the draft and see their progression over the years. The biggest "steals" should be who you pick up in the later rounds of your draft</p>
+          <h2 id="text3">who was the best draft pick?</h2>
+          <p>The player with the average best per year number of fantasy points was _______</p>
+          <p id="text7">Surprised? I sure was.</p>
+          <h2 id="text3">which draft class was the best based on per year fanatsy point averages</h2>
+          <p id="text7">Over the last ten years, the draft class of _____ accumulated the most points averaging _____ per year.</p>
+          <br></br>
+          <p id="text8">Thanks to fantasy and wikipedia for providing the information necessary to come to these conclusions
+          Disclaimer: I am not affiliated with the NFL or Fantasy Football, and I don't take responsibility for the picks that were based off of this data
+          This was a side project to keep my mind busy because I got bored after work over the summers, and I wanted to put my skills to the test
+          As of now, I have chosen to disclude undrafted players or players drafted before the last ten years. Make sure to keep these players in mind.
+          For more information, get in touch: vikas.peraka@gmail.com</p>
+        </div>
       </div>
     );
   }
