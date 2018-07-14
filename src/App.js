@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class App extends Component {
   constructor(props) {
@@ -215,15 +216,13 @@ class App extends Component {
           <p>Now there is no way to predict the future and how players perform, but maybe looking at the past may give insight over how the player will perform.</p>
           <br></br>
           <h2 id="text3">how exactly are fantasy statistics calculate</h2>
-          <a href="https://web.wpi.edu/Pubs/E-project/Available/E-project-042513-140309/unrestricted/ASL_MQP_jpa.pdf" id='formulaLink' target='_blank'>click here for more information about how the formula was derived</a>
+          <a href="https://web.wpi.edu/Pubs/E-project/Available/E-project-042513-140309/unrestricted/ASL_MQP_jpa.pdf" id='formulaLink' target='_blank' rel="noopener noreferrer">click here for more information about how the formula was derived</a>
           <p id="text4">As you can see, not only skill level, but also overall health and number of games played can play a huge role in a players success.</p>
           <p>Now that you understand how the information is derived, let's take a look on how past picks have faired over the years</p>
           <h2 id="text3">do your picks stack up to their potential?</h2>
           <p id="text5">Click on a year to see player data. Sorting is available based on draft and redraft picks. For more information on a player, simply click on their name</p>
         </div>
         <div id="result">
-          <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></link>
-          <link rel="stylesheet" href="./dist/react-bootstrap-table.min.css"></link>
           <Navbar>
             <Nav>
               <NavItem eventkey={1} onClick={this.getStats2008}>2008</NavItem>
@@ -240,7 +239,7 @@ class App extends Component {
           </Navbar>
           <div id="resultOps">
             <div id="resultTable">
-              <BootstrapTable height='120' scrollTop={'Bottom'} data={this.state.stats} selectRow={ selectRowProp } options={options}>
+              <BootstrapTable hover condensed height='400' scrollTop={'Bottom'} data={this.state.stats} selectRow={ selectRowProp } options={options}>
                 <TableHeaderColumn dataField='Name' isKey={true} dataSort={true}>Name</TableHeaderColumn>
                 <TableHeaderColumn dataField='Pick' dataSort={true}>Pick</TableHeaderColumn>
                 <TableHeaderColumn dataField='Redraft' dataSort={true}>Redraft</TableHeaderColumn>
@@ -255,7 +254,6 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <p>where dpes this go</p>
         {/* <p>One of the interesting ideas I found is that most of the players drafted in the later rounds don't even make the list. In fact a bunch of undrafter players have had more success than those drafted. Take Wes Welker and Tony Romo for example. Both potentially future Hall of Famers that I don't analyze because their talent was overseen by many teams</p>
         <h2>Analyzing the biggest busts and steals over the past ten years</h2>
         <p>Based on this data, you can see that just because a player was the biggest "steal" in this instance doens't necessarily mean they had a legendary career. Most of the success can be attributed to one season over the course of the player's career.</p>
