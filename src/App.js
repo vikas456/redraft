@@ -208,7 +208,6 @@ class App extends Component {
   
   //todo
   //dangerously set inner html of text area (look at past project)
-  //conditionally render results after text area
 
   //Create graphs to show player vs pick vs redraft; see mock
   //work on hover: name, pick, repick, total points
