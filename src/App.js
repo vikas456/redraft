@@ -5,6 +5,7 @@ import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import Info from './Info';
 import Wiki from './Wiki';
+import Scatterplot from './Scatterplot';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
       stealDiff: '',
       bustName: '',
       bustDiff: '',
-      selected: false
+      selected: false,
     }
     this.getStats2008 = this.getStats2008.bind(this);
     this.getStats2009 = this.getStats2009.bind(this);
@@ -38,6 +39,7 @@ class App extends Component {
     this.info = this.info.bind(this);
     this.wiki = this.wiki.bind(this);
     this.textChange = this.textChange.bind(this);
+    this.scatterPlotRender = this.scatterPlotRender.bind(this);
   }
 
   includes(arr, elem) {
@@ -210,15 +212,17 @@ class App extends Component {
   textChange() {
     return ({__html: this.state.value});
   }
-  
-  //todo
-  //dangerously set inner html of text area (look at past project)
 
-  //Create graphs to show player vs pick vs redraft; see mock
-  //work on hover: name, pick, repick, total points
-  //fill out missing data
-  //access player pictures: python web parser (wiki has access issues)
-  //link site to my site
+  scatterPlotRender() {
+    if (this.state.selected) {
+      let data = [];
+      for (let i = 0; i < this.state.stats.length; i++) {
+        data.push({type: `${i}`, x: this.state.stats[i].Pick, y: this.state.stats[i].Redraft});
+      }
+      return <Scatterplot data={data} />
+    }
+    
+  }
 
   render() {
     const selectRowProp = {
@@ -268,7 +272,7 @@ class App extends Component {
           </Navbar>
           <div id="resultOps">
             <div id="resultTable">
-              <BootstrapTable hover condensed height='400' scrollTop={'Bottom'} data={this.state.stats} selectRow={ selectRowProp } options={options} search={true}>
+              <BootstrapTable hover condensed height='400' scrollTop={'Bottom'} data={this.state.stats} selectRow={ selectRowProp } options={options} search={true} dataSort={false}>
                 <TableHeaderColumn dataField='Name' isKey={true} dataSort={true}>Name</TableHeaderColumn>
                 <TableHeaderColumn dataField='Pick' dataSort={true} searchable={false}>Pick</TableHeaderColumn>
                 <TableHeaderColumn dataField='Redraft' dataSort={true} searchable={false}>Redraft</TableHeaderColumn>
@@ -281,6 +285,9 @@ class App extends Component {
               {/* <img src={'https://en.wikipedia.org/wiki/' + this.state.firstName + '_' + this.state.lastName + '#/media/File:' + this.state.firstName + '_' + this.state.lastName + '.JPG'} alt={'image of ' + this.state.firstName + ' ' + this.state.lastName}/> */}
             </div>
           </div>
+        </div>
+        <div id="chart">
+          {this.scatterPlotRender()}
         </div>
         <div id="endtxt">
           <h2 id="text3">interesting findings</h2>
