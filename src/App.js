@@ -145,10 +145,12 @@ class App extends Component {
           let maxName = '';
           let minName = '';
           arr.sort(((a, b) => b.Points - a.Points));
+          let total = 0;
           for (let i = 0; i < arr.length; i++){
             arr[i].Redraft = i + 1;
+            total += arr[i].Points;
           }
-          console.log(arr[0].Name + " had " + arr[0].Points/(2018-time) + " points per year");
+          console.log(time + " had " + total/(2018-time) + " points per year");
           //determining biggest steal and bust
           for (let i = 0; i < arr.length; i++) {
             let diff = Number(arr[i].Redraft) - Number(arr[i].Pick);
@@ -297,10 +299,10 @@ class App extends Component {
           <p>Based on this data, you can see that just because a player was the biggest "steal" in this instance doens't necessarily mean they had a legendary career. Most of the success can be attributed to one season over the course of the player's career.</p>
           <p id="text7">Instead in my opinion, you, in picking your next superstar, should click over each of the top players in the draft and see their progression over the years. The biggest "steals" should be who you pick up in the later rounds of your draft</p>
           <h2 id="text3">who was the best draft pick?</h2>
-          <p>The player with the average best per year number of fantasy points was _______</p>
+          <p>The player with the average best per year number of fantasy points was Cam Newton with 311.7514285714286 points per year</p>
           <p id="text7">Surprised? I sure was.</p>
           <h2 id="text3">which draft class was the best based on per year fanatsy point averages</h2>
-          <p id="text7">Over the last ten years, the draft class of _____ accumulated the most points averaging _____ per year.</p>
+          <p id="text7">Over the last ten years, the draft class of 2016 accumulated the most points averaging 6807.759999999998 points per year.</p>
           <br></br>
           <p id="text8">Thanks to fantasy and wikipedia for providing the information necessary to come to these conclusions
           Disclaimer: I am not affiliated with the NFL or Fantasy Football, and I don't take responsibility for the picks that were based off of this data
