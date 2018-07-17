@@ -122,52 +122,53 @@ class App extends Component {
         return req.json();
       }).then((myJson) => {
         let playerInfo = myJson.players;
-        let max = 0;
-        let min = 0;
-        let maxName = '';
-        let minName = '';
         for(let i = 0; i < playerInfo.length; i++){
           if (playerInfo[i].esbid !== null) {
             for (let j = 0; j < playersArr.length; j++){
               if (playersArr[j].localeCompare(playerInfo[i].name) === 0){
                 let inc = this.includes(arr, playerInfo[i].name);
                 if (inc !== -1){
-                  arr[inc].Redraft += playerInfo[i].seasonPts;
+                  // console.log('original: ' + arr[inc].Redraft + ' addition: ' + playerInfo[i].seasonPts)
+                  arr[inc].Points += playerInfo[i].seasonPts;
                 }
                 else{
-                  arr.push({Name: playerInfo[i].name, Pick: j + 1, Redraft: playerInfo[i].seasonPts});
+                  arr.push({Name: playerInfo[i].name, Pick: j + 1, Points: playerInfo[i].seasonPts, Redraft: 0});
                   extra.push({Name: playerInfo[i].name, position: playerInfo[i].position, team: playerInfo[i].teamAbbr});
                 }
               }
             }
           }
         }
-
-        arr.sort(((a, b) => b.Redraft - a.Redraft));
-        for (let i = 0; i < arr.length; i++){
-          arr[i].Redraft = i + 1;
-        }
-
-        //determining biggest steal and bust
-        for (let i = 0; i < arr.length; i++) {
-          let diff = Number(arr[i].Redraft) - Number(arr[i].Pick);
-          if (diff < min) {
-            min = diff;
-            minName = arr[i].Name;
+      }).then((ans) => {
+          let max = 0;
+          let min = 0;
+          let maxName = '';
+          let minName = '';
+          arr.sort(((a, b) => b.Points - a.Points));
+          for (let i = 0; i < arr.length; i++){
+            arr[i].Redraft = i + 1;
           }
-          if (diff > max) {
-            max = diff;
-            maxName = arr[i].Name;
+          console.log(arr[0].Name + " had " + arr[0].Points/(2018-time) + " points per year");
+          //determining biggest steal and bust
+          for (let i = 0; i < arr.length; i++) {
+            let diff = Number(arr[i].Redraft) - Number(arr[i].Pick);
+            if (diff < min) {
+              min = diff;
+              minName = arr[i].Name;
+            }
+            if (diff > max) {
+              max = diff;
+              maxName = arr[i].Name;
+            }
           }
-        }
 
-        this.setState({stealName: minName});
-        this.setState({bustName: maxName});
-        this.setState({stealDiff: min});
-        this.setState({bustDiff: max});        
-        this.setState({stats: arr});
-        this.setState({extraStats: extra});
-        return myJson;
+          this.setState({stealName: minName});
+          this.setState({bustName: maxName});
+          this.setState({stealDiff: min});
+          this.setState({bustDiff: max});        
+          this.setState({stats: arr});
+          this.setState({extraStats: extra});
+          return ans;
       }).catch((e) => {
         console.log('error occured: ' + e);
       });
