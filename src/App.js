@@ -127,13 +127,19 @@ class App extends Component {
             for (let j = 0; j < playersArr.length; j++){
               if (playersArr[j].localeCompare(playerInfo[i].name) === 0){
                 let inc = this.includes(arr, playerInfo[i].name);
-                if (inc !== -1){
+                let inc2 = this.includes(extra, playerInfo[i].name);
+                if (inc !== -1 || inc2 !== -1){
                   // console.log('original: ' + arr[inc].Redraft + ' addition: ' + playerInfo[i].seasonPts)
-                  arr[inc].Points += playerInfo[i].seasonPts;
+                  if (inc !== -1) {
+                    arr[inc].Points += playerInfo[i].seasonPts;
+                  }
+                  if (inc2 !== -1) {
+                    extra[inc2].Points += playerInfo[i].seasonPts;
+                  }
                 }
                 else{
                   arr.push({Name: playerInfo[i].name, Pick: j + 1, Points: playerInfo[i].seasonPts, Redraft: 0});
-                  extra.push({Name: playerInfo[i].name, position: playerInfo[i].position, team: playerInfo[i].teamAbbr});
+                  extra.push({Name: playerInfo[i].name, position: playerInfo[i].position, team: playerInfo[i].teamAbbr, Points:  playerInfo[i].seasonPts});
                 }
               }
             }
@@ -145,12 +151,12 @@ class App extends Component {
           let maxName = '';
           let minName = '';
           arr.sort(((a, b) => b.Points - a.Points));
-          let total = 0;
+          // let total = 0;
           for (let i = 0; i < arr.length; i++){
             arr[i].Redraft = i + 1;
-            total += arr[i].Points;
+            // total += arr[i].Points;
           }
-          console.log(time + " had " + total/(2018-time) + " points per year");
+
           //determining biggest steal and bust
           for (let i = 0; i < arr.length; i++) {
             let diff = Number(arr[i].Redraft) - Number(arr[i].Pick);
@@ -185,7 +191,10 @@ class App extends Component {
         break;
       }
     }
-    let query = '<font size="5" face="Times New Roman", Times, serif> Name: </font>' + row.Name + '<br/><font size="5" face="Times New Roman", Times, serif>Position: </font>' + arr[i].position + '<br><font size="5" face="Times New Roman", Times, serif>Team: </font>' + arr[i].team;
+    let query = '<font size="5" face="Times New Roman", Times, serif> Name: </font>' + row.Name + '<br/><font size="5" face="Times New Roman", Times, serif>Position: </font>' 
+      + arr[i].position + '<br><font size="5" face="Times New Roman", Times, serif>Team: </font>' + arr[i].team + '<br/><font size="5" face="Times New Roman", Times, serif> Points: </font>'
+      + arr[i].Points;
+
     this.setState({value: query});
     let name = row.Name.split(" ");
     this.setState({firstName: name[0]});
