@@ -60,6 +60,8 @@ class BarChartContainer extends Component {
     return (
       <div className="App">
         {this.populateData()}
+        <h2>How teams stack up</h2>
+        <p>Teams that have a red bar indicated that the value was the negative of what is shown on the bar chart. This bar chart api can't show negative numbers</p>
         <div id="barchart">
           <BarChart
             data={this.state.data}
