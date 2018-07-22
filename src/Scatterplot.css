@@ -8,9 +8,11 @@
     color: rgb(85, 4, 161);
     text-align: center;
     background-color: white;
+    margin-left: 2%;
 }
 
 #scatterplot {
+    margin-left: 2%;
     float: left;
     background-color: white;
 }

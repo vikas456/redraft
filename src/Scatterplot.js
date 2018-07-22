@@ -3,7 +3,7 @@ import './Scatterplot.css';
 import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import { ScatterplotChart } from 'react-easy-chart';
 
-class Info extends Component {
+class Scatterplot extends Component {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
@@ -81,5 +81,5 @@ class Info extends Component {
   }
 }
 
-export default Info;
+export default Scatterplot;
 

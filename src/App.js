@@ -6,6 +6,7 @@ import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min
 import Info from './Info';
 import Wiki from './Wiki';
 import Scatterplot from './Scatterplot';
+import BarChartContainer from './BarChartContainer';
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class App extends Component {
     this.wiki = this.wiki.bind(this);
     this.textChange = this.textChange.bind(this);
     this.scatterPlotRender = this.scatterPlotRender.bind(this);
+    this.barChartRender = this.barChartRender.bind(this);
   }
 
   includes(arr, elem) {
@@ -233,7 +235,21 @@ class App extends Component {
       }
       return <Scatterplot data={data} />
     }
-    
+  }
+
+  barChartRender() {
+    if (this.state.selected) {
+      let data=[
+        {x: 'A', y: 20},
+        {x: 'B', y: 30},
+        {x: 'C', y: 40},
+        {x: 'D', y: 20},
+        {x: 'E', y: 40},
+        {x: 'F', y: 25},
+        {x: 'G', y: 5}
+      ];
+      return <BarChartContainer data={data} />
+    }
   }
 
   render() {
@@ -300,6 +316,7 @@ class App extends Component {
         </div>
         <div id="chart">
           {this.scatterPlotRender()}
+          {this.barChartRender()}
         </div>
         <div id="endtxt">
           <h2 id="text3">interesting findings</h2>
