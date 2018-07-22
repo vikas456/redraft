@@ -42,6 +42,7 @@ class App extends Component {
     this.textChange = this.textChange.bind(this);
     this.scatterPlotRender = this.scatterPlotRender.bind(this);
     this.barChartRender = this.barChartRender.bind(this);
+    this.barIncludes = this.barIncludes.bind(this);
   }
 
   includes(arr, elem) {
@@ -237,19 +238,42 @@ class App extends Component {
     }
   }
 
+  barIncludes(arr, elem) {
+    for (let k = 0; k < arr.length; k++){
+      if (arr[k].x.localeCompare(elem) === 0){
+        return k;
+      }
+    }
+    return -1;
+  }
+
   barChartRender() {
-    
     if (this.state.selected) {
-      // let data=[
-      //   {x: 'A', y: 20},
-      //   {x: 'B', y: 30},
-      //   {x: 'C', y: 40},
-      //   {x: 'D', y: 20},
-      //   {x: 'E', y: 40},
-      //   {x: 'F', y: 25},
-      //   {x: 'G', y: 5}
-      // ];
-      return <BarChartContainer info={this.state.stats} />
+      let result = [];
+      let arr = this.state.stats;
+      for (let i = 0; i < arr.length; i++) {
+        let inc = this.barIncludes(result, arr[i].team);
+        if (inc !== -1) {
+          result[inc].y += (arr[i].Pick - arr[i].Redraft);
+        }
+        else {
+          if (arr[i].team !== ''){
+            result.push({x: arr[i].team, y: (arr[i].Pick - arr[i].Redraft)});
+          }
+        }
+      }
+      for (let i = 0; i < result.length; i++) {
+        if (result[i].y < 0) {
+          // eslint-disable-next-line
+          let val = result[i].y;
+          let obj = {x: result[i].x, y: Math.abs(val), color: '#f00'};
+          result.push(obj);
+        }
+      }
+      console.log(result);
+      result.sort(((a, b) => a.x.localeCompare(b.x)));
+      console.log(result);
+      return <BarChartContainer data={result} />
     }
   }
 
