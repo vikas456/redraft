@@ -28,7 +28,7 @@ class Scatterplot extends Component {
       left: `${e.screenX + 10}px`,
       y: d.y,
       x: d.x});
-      console.log(d.x + ' ' + d.y);
+      //console.log(d.x + ' ' + d.y);
   }
   
   mouseMoveHandler(e) {

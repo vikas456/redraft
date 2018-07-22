@@ -140,7 +140,7 @@ class App extends Component {
                   }
                 }
                 else{
-                  arr.push({Name: playerInfo[i].name, Pick: j + 1, Points: playerInfo[i].seasonPts, Redraft: 0});
+                  arr.push({Name: playerInfo[i].name, Pick: j + 1, Points: playerInfo[i].seasonPts, Redraft: 0, team: playerInfo[i].teamAbbr});
                   extra.push({Name: playerInfo[i].name, position: playerInfo[i].position, team: playerInfo[i].teamAbbr, Points:  playerInfo[i].seasonPts});
                 }
               }
@@ -238,17 +238,18 @@ class App extends Component {
   }
 
   barChartRender() {
+    
     if (this.state.selected) {
-      let data=[
-        {x: 'A', y: 20},
-        {x: 'B', y: 30},
-        {x: 'C', y: 40},
-        {x: 'D', y: 20},
-        {x: 'E', y: 40},
-        {x: 'F', y: 25},
-        {x: 'G', y: 5}
-      ];
-      return <BarChartContainer data={data} />
+      // let data=[
+      //   {x: 'A', y: 20},
+      //   {x: 'B', y: 30},
+      //   {x: 'C', y: 40},
+      //   {x: 'D', y: 20},
+      //   {x: 'E', y: 40},
+      //   {x: 'F', y: 25},
+      //   {x: 'G', y: 5}
+      // ];
+      return <BarChartContainer info={this.state.stats} />
     }
   }
 
