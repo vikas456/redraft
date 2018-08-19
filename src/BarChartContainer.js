@@ -12,9 +12,11 @@ class BarChartContainer extends Component {
   render() {
     return (
       <div className="App">
-        <h2>How teams stack up</h2>
-        <p>Teams that have a red bar indicated that the value was the negative of what is shown on the bar chart. This bar chart api can't show negative numbers</p>
+        {/* <h2>How teams stack up</h2>
+        <p>Teams that have a red bar indicated that the value was the negative of what is shown on the bar chart. This bar chart api can't show negative numbers</p> */}
         <div id="barchart">
+          <h2>How teams stack up</h2>
+          <p>Teams that have a red bar indicated that the value was the negative of what is shown on the bar chart. This bar chart api can't show negative numbers</p>
           <BarChart
             data={this.props.data}
             margin={{top: 50, right: 0, bottom: 30, left: 10}}

@@ -68,6 +68,11 @@ body {
   text-align: center;
 }
 
+#barchart {
+  margin-top: 5%;
+  float: left;
+}
+
 #result {
   width: 99%;
   margin-bottom: 5%;

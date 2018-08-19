@@ -273,7 +273,7 @@ class App extends Component {
       console.log(result);
       result.sort(((a, b) => a.x.localeCompare(b.x)));
       console.log(result);
-      return <BarChartContainer data={result} />
+      return <BarChartContainer id="barchart" data={result} />
     }
   }
 
