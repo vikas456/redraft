@@ -232,9 +232,9 @@ class App extends Component {
     if (this.state.selected) {
       let data = [];
       for (let i = 0; i < this.state.stats.length; i++) {
-        data.push({type: `${i}`, x: this.state.stats[i].Pick, y: this.state.stats[i].Redraft});
+        data.push({type: `${this.state.stats[i].Name}`, x: this.state.stats[i].Pick, y: this.state.stats[i].Redraft});
       }
-      return <Scatterplot data={data} />
+      return <Scatterplot data={data} players={this.state.players}/>
     }
   }
 

@@ -51,6 +51,19 @@ class Scatterplot extends Component {
     return ({__html: query});
   }
 
+  position3() {
+    let name = '';
+    for (let i = 0; i < this.props.data.length; i++) {
+      if (this.props.data[i].x === this.state.x) {
+        name = this.props.data[i].type;
+        console.log(this.props.data[i]);
+        break;
+      }
+    }
+    let query = 'Player name: ' + name;
+    return ({__html: query});
+  }
+
   render() {
     return (
       <div className="App">
@@ -73,6 +86,7 @@ class Scatterplot extends Component {
                     margin={{top: 10, right: 10, bottom: 30, left: 40}}
                 />
             </div>
+            <div id="location" dangerouslySetInnerHTML={this.position3()}></div>
             <div id="location" dangerouslySetInnerHTML={this.position1()}></div>
             <div id="location" dangerouslySetInnerHTML={this.position2()}></div>
         </div>
